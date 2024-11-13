@@ -13,7 +13,7 @@ Boostraps
 Node JS
 
 Clona este repositorio en tu máquina local: git clone [https://github.com/tu-usuario/nombre-del-repositorio.git](https://github.com/PabloMdB/TRABAJO-JAVASCRIPT.git)
-Abre el archivo index.html en tu navegador para comenzar a jugar.
+Abre el archivo Inicio.html en tu navegador para comenzar a utilizar.
 
 Inicio de session: 
 Usuario: pablo.marinetti10@gmail.com 
