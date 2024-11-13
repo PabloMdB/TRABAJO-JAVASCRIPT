@@ -1,5 +1,5 @@
 
-Aventura Interactiva: Aplicación para muestras de un luthier
+Aplicación para muestras de un luthier
 App, para que un lutier pueda publicar sus instrumentos para exponer al publico. 
 
 Características del Proyecto
