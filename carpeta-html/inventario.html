@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Cajón del Lutier</title>
+    <link rel="shortcut icon" href="../img/D_NQ_NP_921598-MLA45558376843_042021-O.webp" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="ecomerceGeneral.css">
+</head>
+
+<body>
+    <nav id="navSuperior" class="navbar navbar-expand-lg sombra">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="inicio.html">
+                <img src="/img/8631694-guitarra-con-banner-grunge-tema-musical-de-ilustración.webp" height="150">
+                <h1>El Cajón del Lutier</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon btn btn-outline-warning"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link p-2 border border-dark rounded bg-warning" href="productos.html">Elaboraciones</a>
+                    </li>
+                    <li class="nav-item" id="navInventario"></li>
+                </ul>
+                <div class="d-flex align-content-center align-items-center" id="navLog"></div>
+            </div>
+        </div>
+    </nav>
+    <div id="contenedorPrincipal" class="container card sombra mb-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <h5>agregar producto</h5>
+            <button class="" type="button" data-bs-toggle="collapse" data-bs-target="#nuevoProducto" >
+                Crear
+            </button>
+        </div>
+        <div class="collapse" id="nuevoProducto">
+            <div class="card bg-light card-body">
+                <form id="formularioProductos">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="nombreProducto" class="form-label">Nombre</label>
+                            <input type="text" class="form-control form-control-sm" id="nombreProducto" placeholder="Ingrese el nombre" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="imagenProducto" class="form-label">insetar imagen</label>
+                            <input type="file" class="form-control form-control-sm" id="imagenProducto" accept="image/*" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="descripcionProducto" class="form-label">Descripción</label>
+                        <textarea class="form-control form-control-sm" placeholder="Ingrese la descripción" id="descripcionProducto" required></textarea>
+                    </div>
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-md-4">
+                            <label for="categoriaProducto" class="form-label">Categoría</label>
+                            <select class="form-select form-select-sm" id="categoriaProducto" required>
+                                <option selected value="">Seleccione una categoría</option>
+                                <option value="gibson">Gibson</option>
+                                <option value="fender">Fender</option>
+                                <option value="telecaster">Telecaster</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 d-flex justify-content-end  align-items-end">
+                            <button class="" type="submit" id="agregarProducto">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+          </div>
+        <div class="row align-items-center">
+            <div class="d-flex align-items-center col-md-2">Seleccione la categoría</div>
+            <div class="col-md-4">
+                <select class="form-select form-select-sm" id="mostrarProductosCategoria">
+                    <option value="todos" selected>Todos</option>
+                    <option value="gibson">Gibson</option>
+                    <option value="fender">Fender</option>
+                    <option value="telecaster">telecaster</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="listaProductos"></div>
+        
+        <div class="d-flex justify-content-end ">
+            <button class="" type="button" id="eliminarSeleccionadosM" data-bs-toggle="modal" data-bs-target="#eliminarSeleccionadosModal">
+                Eliminar Productos
+            </button>
+        </div>
+    </div>
+    <!-- Modal Eliminar seleccionados-->
+    <div class="modal fade" id="eliminarSeleccionadosModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fs-5" id="ModalLabel">Eliminar productos seleccionados</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>¿Desea Eliminar el producto?</h6>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="" id="eliminarSeleccionados">Borrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Eliminar-->
+    <div class="modal fade" id="eliminarModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fs-5" id="ModalLabel">Eliminar producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Modificar-->
+    <div class="modal fade" id="modificarModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="" id="ModalLabel">Modificar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"></div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="contenedor-footer">
+            <p class="flex-around">Desarrollado por: Pablo Marinetti</p>
+            <div class="solo-desktop flex-around">
+                <div class="flex-around">
+                <a class="link-redes" href="https://wa.me/5492215711015" title="WhatsApp"><i
+                        class="fa-brands fa-whatsapp fa-2x"></i></a>
+                <a class="link-redes" href="https://www.facebook.com/RedondoDeRicota00"
+                    target="_blank" title="LinkedIn"><i class="fa-brands fa-facebook fa-2x"></i></a>
+                <a class="link-redes" href="https://www.instagram.com/pablomarinettii/" target="_blank" title="Instagram"><i
+                        class="fa-brands fa-instagram fa-2x"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../carpeta-js/inventario.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
